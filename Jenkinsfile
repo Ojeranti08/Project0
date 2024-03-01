@@ -65,7 +65,7 @@ pipeline {
                     sh "sudo docker stop ${containerName} || true"
                     sh "sudo docker container rm -f ${containerName} || true" 
                     // Build and run the new container with the unique name, mapping container port 8080 to host port 8082
-                    def dockerRun = "sudo docker container run -dt --name ${containerName} -p 8082:8080 ojeranti08/javaapp:1.3.5"
+                    def dockerRun = "sudo docker container run -dt --name ${containerName} -p 8083:8080 ojeranti08/javaapp:1.3.5"
                     sshagent(['Nodes-Credentials']) {
                         sh "ssh -o StrictHostKeyChecking=no centos@10.0.1.14 ${dockerRun}"
                     }
